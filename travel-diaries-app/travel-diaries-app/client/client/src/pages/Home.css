@@ -1,0 +1,187 @@
+.home-container {
+  padding: 20px;
+}
+
+body {
+  background-color: #e1bb80;
+}
+
+.stories-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Explicitly set 4 columns */
+  gap: 20px;
+}
+
+/* Ensure consistent alignment even with few items */
+.stories-container {
+  justify-items: center; /* Center items horizontally within their grid cell */
+}
+
+.home-container h1 {
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center; /* Center the title */
+}
+
+.story-card-wrapper {
+  /* Fixed dimensions for the card wrapper */
+  width: 300px; /* Adjust as needed */
+  height: 375px; /* Adjust as needed - based on aspect ratio and content */
+  aspect-ratio: unset; /* Override the aspect ratio */
+  perspective: 1000px;
+  position: relative;
+}
+
+.story-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.story-card {
+  transform: rotateY(0deg);
+}
+
+.story-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.story-front,
+.story-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-front {
+  transform: rotateY(0deg);
+}
+
+.story-front img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.story-front h2 {
+  padding: 10px;
+  margin: 0;
+  font-size: 1.2em;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+}
+
+.story-back {
+  transform: rotateY(180deg);
+  background-color: #e0f7fa;
+  color: #004d40;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto; /* In case the back content is longer */
+}
+
+.story-back h2 {
+  margin-top: 0;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  font-family: 'Times New Roman', serif;
+}
+
+.story-back p {
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  font-family: 'Times New Roman', serif;
+}
+
+.story-card-wrapper::before,
+.story-card-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+  background: linear-gradient(45deg, var(--glow-color), transparent);
+}
+
+.story-card-wrapper:hover .story-card {
+  transform: rotateY(180deg);
+}
+
+.story-card-wrapper:hover::before {
+  opacity: 0.9;
+  filter: blur(7px);
+}
+
+.story-card-wrapper:hover::after {
+  opacity: 0.7;
+  filter: blur(12px);
+  transform: scale(1.07);
+}
+
+.delete-button {
+  margin-top: 10px;
+  background-color: #ff5252;
+  border: none;
+  padding: 10px 16px;
+  color: white; 
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ff1744;
+}
+
+/* Style for delete button on the back */
+.story-back button {
+  background-color: #f44336; /* Red color for delete */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Push the button to the bottom */
+}
+
+/* Hover effect for delete button on the back */
+.story-back button:hover {
+  background-color: #d32f2f; /* Darker red for hover effect */
+}
+
+/* Focus effect for delete button on the back */
+.story-back button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Red focus ring */
+}
+
+/* Disabled state for delete button on the back */
+.story-back button:disabled {
+  background-color: #e57373; /* Light red when disabled */
+  cursor: not-allowed;
+}

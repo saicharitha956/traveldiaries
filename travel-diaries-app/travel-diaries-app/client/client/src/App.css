@@ -1,0 +1,6 @@
+.story-image {
+  width: 10px;
+  max-height: 20px;
+  object-fit: cover;
+  border-radius: 8px;
+}

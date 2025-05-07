@@ -1,0 +1,81 @@
+.navbar {
+  background-color: #0e5f6e2b; /* Dark background */
+  color: #fcf9f9;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  perspective: 1000px; /* Enable 3D perspective */
+}
+
+.navbar-title {
+  font-size: 1.8rem; /* Larger title */
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: transform 0.5s ease; /* Smooth transition */
+  transform: translateZ(20px); /* Bring title forward */
+  font-family: 'Times New Roman', serif;
+  color: blue;
+}
+
+.navbar-title:hover {
+  transform: translateZ(30px) rotateY(20deg); /* Tilt on hover */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);  /* Add glow */
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  font-family: 'Times New Roman', serif;
+}
+
+.navbar-links a {
+  color: #050202;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.75rem 0;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; /* Add text-shadow */
+}
+.navbar-links button{
+  color: #fbf5f5;
+  text-decoration: none;
+  font-size: 1.0rem;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; /* Add text-shadow */
+  background-color: rgba(0, 0, 0, 0.403);
+  border-radius: 5px;
+  height: 40px;
+}
+
+.navbar-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  width: 0;
+  height: 0.15rem;
+  background-color: #fff;
+  transition: width 0.3s ease, left 0.3s ease; /* Animate width and left */
+}
+.navbar-links button:hover {
+  color: #5fc4e3;
+  /* transform: translateY(-3px) translateZ(10px); Move on hover */
+  text-shadow: 10 0 8px rgba(26, 154, 218, 0.8); /* Add glow */
+}
+
+
+.navbar-links a:hover {
+  color: #fff;
+  transform: translateY(-3px) translateZ(10px); /* Move on hover */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Add glow */
+}
+
+.navbar-links a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
